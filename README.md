@@ -23,9 +23,9 @@ To run Movie Meter locally, follow these steps:
 
 ## Usage
 
-Open your web browser and go to http://localhost:3000 to access the Movie Meter application.
-Use the search functionality to find movies and view their ratings across different platforms.
-Explore detailed information about each films.
+- Open your web browser and go to http://localhost:3000 to access the Movie Meter application.
+- Use the search functionality to find movies and view their ratings across different platforms.
+- Explore detailed information about each films.
 
 ## Contributing
 
@@ -37,6 +37,6 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Acknowledgments
 
-IMDb
-Rotten Tomatoes
-Letterboxd
+- IMDb
+- Rotten Tomatoes
+- Letterboxd
