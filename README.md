@@ -21,21 +21,21 @@ To run Movie Meter locally, follow these steps:
    cd movie-meter
    ```
 
-##Usage
+## Usage
 
 Open your web browser and go to http://localhost:3000 to access the Movie Meter application.
 Use the search functionality to find movies and view their ratings across different platforms.
 Explore detailed information about each films.
 
-##Contributing
+## Contributing
 
 Contributions are welcome! If you have suggestions for improvements or new features, please fork the repository and submit a pull request.
 
-##License
+## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-##Acknowledgments
+## Acknowledgments
 
 IMDb
 Rotten Tomatoes
