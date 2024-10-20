@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/movie.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="movie-container">
+      <div class="movie-desc">
+        <h1 class="movie-name"></h1>
+        <h3 class="tag-line"></h3>
+        <p class="plot"></p>
+      </div>
+      <div class="poster">
+        <img
+          class="movie-img"
+          src="https://media.istockphoto.com/id/827247322/vector/danger-sign-vector-icon-attention-caution-illustration-business-concept-simple-flat-pictogram.jpg?s=612x612&w=0&k=20&c=BvyScQEVAM94DrdKVybDKc_s0FBxgYbu-Iv6u7yddbs="
+          alt="error poster not found"
+        />
+      </div>
+      <div class="movie-info">
+        <div class="genre-div"></div>
+        <p class="director"></p>
+        <p class="status"></p>
+        <p class="date"></p>
+        <p class="runtime"></p>
+        <div class="rating-div">
+          <div class="imdb-rating box">
+            <h1>IMDb</h1>
+            <p class="imdb"></p>
+          </div>
+          <div class="mc-rating box">
+            <h1>Metacritic</h1>
+            <p class="mc"></p>
+          </div>
+          <div class="rt-rating box">
+            <h1>Rotten Tomatoes</h1>
+            <p class="rt"></p>
+          </div>
+          <div class="lb-rating box">
+            <h1>Letterboxd</h1>
+            <p class="lb"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const body = document.body;
+      const name = document.querySelector(".movie-name");
+      const tagLine = document.querySelector(".tag-line");
+      const image = document.querySelector(".movie-img");
+      const desc = document.querySelector(".plot");
+      const genreDiv = document.querySelector(".genre-div");
+      const director = document.querySelector(".director");
+      const runtime = document.querySelector(".runtime");
+      const status = document.querySelector(".status");
+      const date = document.querySelector(".date");
+      const imdb = document.querySelector(".imdb");
+      const rt = document.querySelector(".rt");
+      const mc = document.querySelector(".mc");
+      const lb = document.querySelector(".lb");
+      const imdbDiv = document.querySelector(".imdb-rating");
+      const rtDiv = document.querySelector(".rt-rating");
+      const lbDiv = document.querySelector(".lb-rating");
+      const mcDiv = document.querySelector(".mc-rating");
+
+      // Extract IMDb ID from the URL query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("imdbID");
+
+      async function getMovieDetails(id) {
+        const url = `https://movies-ratings2.p.rapidapi.com/ratings?id=${id}`;
+        const options = {
+          method: "GET",
+          headers: {
+            "X-RapidAPI-Key": "enter your key here",
+            "X-RapidAPI-Host": "movies-ratings2.p.rapidapi.com",
+          },
+        };
+
+        try {
+          const response = await fetch(url, options);
+          const movieDetails = await response.json();
+
+          console.log(movieDetails);
+
+          const posterPath = `https://image.tmdb.org/t/p/original${movieDetails.media.poster_path}`;
+          const bgImgUrl = `https://image.tmdb.org/t/p/original${movieDetails.media.backdrop_path}`;
+          body.style.backgroundImage = `url(${bgImgUrl})`;
+          body.style.backgroundSize = "cover";
+          body.style.backgroundPosition = "center";
+          body.style.backgroundRepeat = "no-repeat";
+
+          name.textContent = movieDetails.media.title;
+          if (
+            movieDetails.media.tagline != null ||
+            movieDetails.media.tagline != undefined ||
+            movieDetails.media.tagline != ""
+          ) {
+            tagLine.innerHTML = `"${movieDetails.media.tagline}"`;
+          }
+          desc.textContent = movieDetails.media.overview;
+          image.src = posterPath;
+
+          if (movieDetails.media.genres) {
+            movieDetails.media.genres.forEach((element) => {
+              const item = document.createElement("span");
+              item.classList.add("badge");
+              if (element.name) {
+                item.innerText = element.name;
+              }
+              genreDiv.appendChild(item);
+            });
+          } else if (movieDetails.media.genre_ids) {
+            movieDetails.media.genre_ids.forEach((element) => {
+              const item = document.createElement("span");
+              item.classList.add("badge");
+              if (element) {
+                item.innerText = `Genre ID: ${element}`;
+              }
+              genreDiv.appendChild(item);
+            });
+          }
+
+          // date.innerHTML = `Release Date: ${movieDetails.media.release_date}`;
+          // status.innerHTML = `Status: ${movieDetails.media.status}`;
+
+          if (movieDetails.media.runtime) {
+            runtime.innerHTML = `Runtime: ${movieDetails.media.runtime} mins`;
+          } else {
+            runtime.innerHTML = `Runtime: 0 mins`;
+          }
+          // director.innerHTML = `Director: ${movieDetails.media.director}`;
+
+          // imdb.textContent = movieDetails.ratings.imdb.score;
+          // mc.textContent = movieDetails.ratings.metacritic.averageScore;
+          // rt.textContent = movieDetails.ratings.rotten_tomatoes.averageScore;
+          // lb.textContent = movieDetails.ratings.letterboxd.score;
+
+          // Helper function to check if a value is valid and property exists in the API response
+          function checkAndDisplay(element, value, fallbackText = "") {
+            if (value !== null && value !== undefined && value !== "") {
+              element.innerHTML = fallbackText
+                ? `${fallbackText} ${value}`
+                : value;
+              element.style.display = "block"; // Ensure element is visible
+            } else {
+              element.style.display = "none"; // Hide element if value is missing
+            }
+          }
+
+          // Example: Release date, status, runtime, and director with labels
+          checkAndDisplay(
+            date,
+            movieDetails.media?.release_date,
+            "Release Date:"
+          );
+          checkAndDisplay(status, movieDetails.media?.status, "Status:");
+          checkAndDisplay(director, movieDetails.media?.director, "Director:");
+
+          // Example: IMDb, Metacritic, Rotten Tomatoes, and Letterboxd scores with labels
+          checkAndDisplay(imdb, movieDetails.ratings?.imdb?.score, "");
+          checkAndDisplay(
+            mc,
+            movieDetails.ratings?.metacritic?.averageScore,
+            ""
+          );
+          checkAndDisplay(
+            rt,
+            movieDetails.ratings?.rotten_tomatoes?.averageScore,
+            ""
+          );
+          checkAndDisplay(lb, movieDetails.ratings?.letterboxd?.score, "");
+
+          imdbDiv.addEventListener("click", function () {
+            window.location.href = movieDetails.ratings.imdb.url;
+          });
+
+          mcDiv.addEventListener("click", function () {
+            window.location.href = movieDetails.ratings.metacritic.url;
+          });
+
+          rtDiv.addEventListener("click", function () {
+            window.location.href = movieDetails.ratings.rotten_tomatoes.url;
+          });
+
+          lbDiv.addEventListener("click", function () {
+            window.location.href = movieDetails.ratings.letterboxd.url;
+          });
+        } catch (error) {
+          console.error("Error fetching movie details:", error);
+        }
+      }
+
+      getMovieDetails(id);
+    </script>
+  </body>
+</html>

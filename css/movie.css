@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #181818;
+  color: #f9f9f9;
+}
+
+.movie-container {
+  max-width: 80vw;
+  height: min-content;
+  margin: 0 auto;
+  display: grid;
+  place-content: center;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 3.6rem;
+  row-gap: 2.4rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.movie-desc {
+  padding: 3.6rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.poster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster img {
+  max-width: 42rem;
+  width: 24rem;
+  height: 36rem;
+  border-radius: 0.5rem;
+}
+
+.movie-info {
+  border-top: grey solid 0.2rem;
+  padding: 2.4rem;
+  grid-column: span 2;
+  width: 100%;
+  display: grid;
+  row-gap: 1.4rem;
+}
+
+.movie-desc h1 {
+  font-size: 12rem;
+  font-weight: 700;
+  margin-bottom: 5rem;
+  display: inline-block; /* Allows the max-width to work correctly */
+  max-width: 100%; /* Set a percentage or specific max-width */
+  white-space: normal; /* Allows wrapping */
+  overflow-wrap: break-word; /* Ensures long words break */
+}
+
+.movie-desc h3 {
+  font-size: 4rem;
+  display: inline-block; /* Allows the max-width to work correctly */
+  max-width: 100%; /* Set a percentage or specific max-width */
+  white-space: normal; /* Allows wrapping */
+  overflow-wrap: break-word; /* Ensures long words break */
+  margin-bottom: 1.5rem;
+}
+
+.plot {
+  font-size: 3.2rem;
+}
+
+.movie-info p {
+  font-size: 1.8rem;
+}
+
+.genre-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.badge {
+  background-color: #e0e0e0; /* Light background */
+  color: #333; /* Dark text */
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: 1.6rem;
+}
+
+.rating-div {
+  margin-top: 1rem;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}
+
+.box {
+  flex: 1;
+  color: #e0e0e0;
+  border: #e0e0e0 solid 0.2rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 0.5rem 2.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin-right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.box h1 {
+  font-size: 1.8rem;
+  margin-right: 1.5rem;
+}
+
+.box p {
+  font-weight: 900;
+  border-radius: 50%;
+  background-color: #696a5e9d;
+  padding: 1rem;
+}
+
+.box:hover {
+  color: #181818;
+  background-color: #e0e0e0;
+}

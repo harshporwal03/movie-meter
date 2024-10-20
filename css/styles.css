@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    240deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 25%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.main-container {
+  background-color: rgba(249, 249, 249, 0.4);
+  width: 100%;
+  max-width: 1200px;
+  height: min-content;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.title {
+  font-family: "Times New Roman", serif;
+  font-size: 12rem;
+  color: #000;
+  margin-bottom: 3rem;
+}
+
+.review-text p {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif,
+    sans-serif;
+  font-size: 2.8rem;
+  color: #000;
+  line-height: 1.4;
+  margin-bottom: 3rem;
+}
+
+.search {
+  margin: 3rem 0 2rem 0;
+  font-family: "Arial", sans-serif;
+  color: #f9f9f9;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 25%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-radius: 1rem;
+  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  transition: box-shadow 0.3s ease; /* Smooth transition for interactions */
+  background-size: 200% 200%; /* Ensures the gradient covers enough space for the animation */
+  animation: gradient-flow 5s ease-in-out infinite; /* Add the animation to the element */
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.search:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Increase shadow depth on hover */
+}
+
+.search-msg {
+  font-size: 5rem;
+  color: #ffffff;
+  margin-bottom: 3rem;
+}
+
+#input {
+  border: 5px solid #090979; /* Adds a light border to define input box */
+  background-color: #fff; /* White background for better visibility */
+  font-size: 2.5rem; /* Reduce font size for better balance */
+  border-radius: 2rem; /* Smooth rounded input field */
+  padding: 1rem 19rem 1rem 2rem; /* Adds space inside the input */
+  color: #333; /* Text color inside the input */
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #00d4ff; /* Highlight border when focused */
+    outline: none; /* Remove default outline */
+  }
+}
+
+.search-btn {
+  /* margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  color: #fff;
+  background-color: rgba(0, 0, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 0.5rem;
+
+  &:hover {
+    transform: scale(1.05);
+  } */
+}
+
+.button-49,
+.button-49:after {
+  margin-top: 2rem;
+  width: 150px;
+  height: 76px;
+  line-height: 78px;
+  font-size: 20px;
+  font-family: "Bebas Neue", sans-serif;
+  background: linear-gradient(45deg, transparent 5%, #090979 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  box-shadow: 6px 0px 0px #00d4ff;
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-49:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+
+  content: "ALTERNATE TEXT";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    #00d4ff 3%,
+    #00d4ff 5%,
+    #090979 5%
+  );
+  text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00d4ff;
+  clip-path: var(--slice-0);
+}
+
+.button-49:hover:after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .button-49,
+  .button-49:after {
+    width: 200px;
+    height: 86px;
+    line-height: 88px;
+  }
+}
+
+.search-btn span {
+  font-size: 3rem;
+}
+
+i {
+  margin-left: 1rem;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.error-msg {
+  color: #333;
+  font-size: 3rem;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+}
+
+.result-container {
+  margin-top: 12rem;
+}
+
+.result {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+  position: relative;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.title-div {
+  background-color: #e8f1f2;
+  width: 100%;
+  height: 100%;
+}
+
+.movie-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  padding: 1.5rem;
+}

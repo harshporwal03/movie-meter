@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/bcc089e770.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Movie Meter</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <h1 class="title">Movie Meter</h1>
+      <div class="review-text">
+        <p>
+          <strong>Movie Meter</strong> is a comprehensive online platform
+          designed for movie enthusiasts seeking to make informed viewing
+          choices. By aggregating essential information and ratings from
+          reputable sources like IMDb, Rotten Tomatoes, and Letterboxd, it
+          provides users with a holistic view of a film's reception across
+          multiple platforms. The user-friendly interface allows for easy
+          navigation, presenting clear comparisons of ratings alongside detailed
+          movie information such as director, release dates, runtime, and
+          genres. In a landscape filled with streaming options, Movie Meter
+          stands out as an invaluable resource for anyone looking to delve
+          deeper into the world of cinema and choose their next film with
+          confidence.
+        </p>
+      </div>
+      <div class="search">
+        <p class="search-msg">Type the movie name below!</p>
+        <input type="text" placeholder="Enter movie name here" id="input" />
+        <button type="button" class="search-btn button-49">
+          <span>Search</span>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="result-container" style="display: none">
+        <div class="result"></div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
